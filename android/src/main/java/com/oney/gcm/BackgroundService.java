@@ -61,6 +61,9 @@ public class BackgroundService extends Service {
     }
     private boolean getBuildConfigDEBUG() {
         Class klass = getBuildConfigClass();
+        if (klass == null) {
+            return false;
+        }
         for (Field f : klass.getDeclaredFields()) {
             if (f.getName().equals("DEBUG")) {
                 try {
